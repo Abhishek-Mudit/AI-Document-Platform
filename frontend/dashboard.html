@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AI Document Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="navbar-brand">AI Document Platform</div>
+            <div class="navbar-nav">
+                <span id="user-info" class="text-muted"></span>
+                <button onclick="logout()" class="btn btn-secondary btn-sm">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="flex justify-between items-center mb-3">
+            <h1>My Projects</h1>
+            <button onclick="showNewProjectModal()" class="btn btn-primary">
+                + New Project
+            </button>
+        </div>
+
+        <div id="alert-container"></div>
+
+        <div id="projects-grid" class="grid grid-2">
+            <!-- Projects will be loaded here -->
+        </div>
+
+        <div id="empty-state" class="hidden text-center" style="padding: 4rem 0;">
+            <h3 class="text-muted">No projects yet</h3>
+            <p class="text-muted">Create your first AI-powered document</p>
+            <button onclick="showNewProjectModal()" class="btn btn-primary mt-2">
+                Create Project
+            </button>
+        </div>
+    </div>
+
+    <!-- New Project Modal -->
+    <div id="new-project-modal" class="modal hidden">
+        <div class="modal-overlay" onclick="hideNewProjectModal()"></div>
+        <div class="modal-content">
+            <h2>Create New Project</h2>
+            <form id="new-project-form">
+                <div class="form-group">
+                    <label class="form-label" for="project-topic">Topic</label>
+                    <input type="text" id="project-topic" class="form-input"
+                        placeholder="e.g., Digital Marketing Strategy" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="project-type">Document Type</label>
+                    <select id="project-type" class="form-select" required>
+                        <option value="docx">Word Document (.docx)</option>
+                        <option value="pptx">PowerPoint Presentation (.pptx)</option>
+                    </select>
+                </div>
+
+                <div class="flex gap-2">
+                    <button type="button" onclick="hideNewProjectModal()" class="btn btn-secondary" style="flex: 1;">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary" style="flex: 1;">
+                        Create
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+
+</html>

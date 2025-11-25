@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - AI Document Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container-sm">
+        <div class="card fade-in" style="margin-top: 5rem;">
+            <div class="text-center">
+                <h1 class="navbar-brand" style="font-size: 2rem; margin-bottom: 0.5rem;">AI Document Platform</h1>
+                <p class="text-muted">Sign in to your account</p>
+            </div>
+            
+            <div id="alert-container"></div>
+            
+            <form id="login-form" style="margin-top: 2rem;">
+                <div class="form-group">
+                    <label class="form-label" for="username">Username</label>
+                    <input type="text" id="username" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <input type="password" id="password" class="form-input" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                    Sign In
+                </button>
+            </form>
+            
+            <p class="text-center mt-3 text-muted">
+                Don't have an account? <a href="register.html" style="color: var(--primary); font-weight: 600;">Sign up</a>
+            </p>
+        </div>
+    </div>
+    
+    <script src="auth.js"></script>
+</body>
+</html>
