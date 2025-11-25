@@ -1,5 +1,5 @@
 // API Configuration
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = '';
 
 // Utility Functions
 function getToken() {
@@ -17,14 +17,14 @@ function removeToken() {
 function showAlert(message, type = 'info') {
     const container = document.getElementById('alert-container');
     if (!container) return;
-    
+
     const alert = document.createElement('div');
     alert.className = `alert alert-${type} fade-in`;
     alert.textContent = message;
-    
+
     container.innerHTML = '';
     container.appendChild(alert);
-    
+
     setTimeout(() => {
         alert.remove();
     }, 5000);
@@ -40,13 +40,13 @@ async function register(email, username, password) {
             },
             body: JSON.stringify({ email, username, password }),
         });
-        
+
         const data = await response.json();
-        
+
         if (!response.ok) {
             throw new Error(data.detail || 'Registration failed');
         }
-        
+
         return data;
     } catch (error) {
         throw error;
@@ -58,7 +58,7 @@ async function login(username, password) {
         const formData = new URLSearchParams();
         formData.append('username', username);
         formData.append('password', password);
-        
+
         const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
             method: 'POST',
             headers: {
@@ -66,13 +66,13 @@ async function login(username, password) {
             },
             body: formData,
         });
-        
+
         const data = await response.json();
-        
+
         if (!response.ok) {
             throw new Error(data.detail || 'Login failed');
         }
-        
+
         return data;
     } catch (error) {
         throw error;
@@ -85,19 +85,19 @@ async function getCurrentUser() {
         if (!token) {
             throw new Error('No token found');
         }
-        
+
         const response = await fetch(`${API_BASE_URL}/api/auth/me`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
             },
         });
-        
+
         const data = await response.json();
-        
+
         if (!response.ok) {
             throw new Error(data.detail || 'Failed to get user info');
         }
-        
+
         return data;
     } catch (error) {
         throw error;
@@ -123,10 +123,10 @@ function requireAuth() {
 if (document.getElementById('login-form')) {
     document.getElementById('login-form').addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
-        
+
         try {
             const data = await login(username, password);
             setToken(data.access_token);
@@ -141,15 +141,15 @@ if (document.getElementById('login-form')) {
 if (document.getElementById('register-form')) {
     document.getElementById('register-form').addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
         const email = document.getElementById('email').value;
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
-        
+
         try {
             await register(email, username, password);
             showAlert('Account created successfully! Logging in...', 'success');
-            
+
             // Auto-login after registration
             setTimeout(async () => {
                 const data = await login(username, password);
