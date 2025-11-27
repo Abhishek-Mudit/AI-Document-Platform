@@ -2,6 +2,8 @@
 
 A full-stack web application that allows authenticated users to generate, refine, and export structured business documents using AI. Users can create Word documents (.docx) or PowerPoint presentations (.pptx) with AI-powered content generation.
 
+🌐 **Live Demo**: [https://ai-document-platform-szto.onrender.com/login.html](https://ai-document-platform-szto.onrender.com/login.html)
+
 ## 🌟 Features
 
 - **User Authentication**: Secure JWT-based authentication system
